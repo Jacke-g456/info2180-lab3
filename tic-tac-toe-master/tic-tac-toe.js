@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const board = document.getElementById('board');
     const squares = board.querySelectorAll('div');
     const div_status = document.getElementById("status")
+    const button = document.querySelector(".btn");
     var current_player = "X";
     let state = ['', '', '', '', '', '', '', '', ''];
     let isactive = true;
@@ -11,6 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
     //This allows the css that is already written for .squares to take effect
     for (let i = 0; i < squares.length; i++) {
         squares[i].classList.add('square');
+    }
+
+    //reset game
+    function reset(){
+        state = ['', '', '', '', '', '', '', '', ''];
+        current_player="X";
+        isactive=true;
+
+        // Clear all squares
+        squares.forEach(square => {
+            square.textContent = '';
+            square.classList.remove('X', 'O');
+        });
+
+        //Reset message
+        div_status.textContent = "Move your mouse over a square and click to play an X or an O.";
+        div_status.classList.remove("you-won");
+
     }
 
     // Winning combinations
@@ -84,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             square.classList.remove("hover");
 
         });
+        button.addEventListener("click", reset);
         
     });
 
