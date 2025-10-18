@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         squares[i].classList.add('square');
     }
 
+
     squares.forEach((square,i) => {
         square.addEventListener('click', function(){
             //check if the click is on an empty square
@@ -32,11 +33,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 console.log(current_player);
 
-
-
             }
 
         
+        });
+        //Highlights squares when mouse hovers 
+        square.addEventListener("mouseenter",() =>{
+            square.classList.add("hover");
+
+        });
+        //Square returns to normal when mouse leaves
+        square.addEventListener("mouseleave",() =>{
+            square.classList.remove("hover");
+
         });
         
     });
