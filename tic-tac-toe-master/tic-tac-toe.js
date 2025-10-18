@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
     squares.forEach((square,i) => {
         square.addEventListener('click', function(){
             //check if the click is on an empty square
-            if (state[i]==''){
+            //also checks for if the game is active before allowing to click
+            //this deals with cheating
+            if (state[i]=='' && isactive){
                 //Update the state
                 state[i]= current_player;
 
